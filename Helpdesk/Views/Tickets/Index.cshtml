@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Helpdesk.Models.Tickets>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ticket List</h2>
+
+<hr />
+<div class="form-group-lg" style="text-align:center">
+
+
+    <strong class="input-lg">
+        Priority: @Html.DropDownList("Priorities", "All Priorities")
+        Category: @Html.DropDownList("Categories", "All Categories")
+        Assignee: @Html.DropDownList("Site_Admins", "All Assingees")  <br /><br />
+        Name: @Html.DropDownList("Name", "All User's Name")
+        Location: @Html.DropDownList("Location", " All Locations")
+        Region: @Html.DropDownList("Region", "All Regions")           <br /><br />
+        @*  Subject: @Html.DropDownList("Subject", "All Subjects")  *@
+
+        <input class="btn btn-primary btn-lg" type="submit" value="Filter Tickets" />
+        <a class="btn btn-primary btn-lg" href="../Tickets/Index">Unfiltered List &raquo;</a>
+    </strong>
+
+    <br />
+    <hr />
+    <div>
+        <input class="input-lg" type="search" name="searchTerm" placeholder="Ticket # or Subject" />
+        <input class="btn btn-primary btn-lg" type="submit" value="Search" />
+
+    </div>
+</div>
+<hr />
+
+<p><a class="btn btn-primary btn-lg" href="../Tickets/Create">Create New Ticket&raquo;</a></p>
+
+<hr />
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @*Html.DisplayNameFor(model => model.TicketsId)*@ Ticket #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @*Html.DisplayNameFor(model => model.Priorities)*@ Priority
+            </th>
+            <th>
+                @*Html.DisplayNameFor(model => model.Categories )*@ Category
+            </th>
+            <th>
+                @*Html.DisplayNameFor(model => model.Site_Admins)*@ Assigned To
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                Files
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketsId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priorities)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categories)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Site_Admins)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @if (item.FileDetails.Count() == 0)
+                {
+                        <span>No File</span>
+                    }
+                    else
+                    {
+                        <span>@item.FileDetails.Count() File(s)</span>
+                    }
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TicketsId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TicketsId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TicketsId })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+<h5></h5>

@@ -1,0 +1,50 @@
+﻿@model Helpdesk.Models.Inventory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComputerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComputerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuildingLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuildingLocation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InventoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

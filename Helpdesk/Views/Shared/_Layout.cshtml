@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/dropzonescss")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Priorities", "Index", "Priorities")</li>
+                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                    <li>@Html.ActionLink("Location", "Index", "Location")</li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Region", "Index", "Regions")</li>
+                    <li>@Html.ActionLink("Site Admins", "Index", "SiteAdmins")</li>
+                    <li>@Html.ActionLink("Administration", "Index", "Administration")</li>
+                    <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>
+                    <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
+                    <li>@Html.ActionLink("Inventory", "Index", "Inventory")</li>
+                </ul>
+                <p class="nav navbar-text navbar-right">Hello, @User.Identity.Name!</p>
+                <p class="nav navbar-text navbar-right">PC Name @Environment.MachineName</p>
+
+                @*   One of the below will be correct once launched. Currently at my skill level, Unsure which shows client IP Address.
+                    Both currently show ipv6 loopback at localhost                                         *@
+                <p class="nav navbar-text navbar-right">Ip Address @HttpContext.Current.Request.UserHostAddress</p>
+                <p class="nav navbar-text navbar-right">Ip Address @Request.UserHostAddress</p>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <hr />
+    <h1>&nbsp;</h1>
+    <h1>&nbsp;</h1>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
